@@ -1,6 +1,8 @@
 package com.romeo.controler;
 
 import java.io.IOException;
+import java.util.Date;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -8,7 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.swing.JOptionPane;
 
+import com.romeo.model.TbHistorial;
 import com.romeo.model.TbUsuariop;
+import com.romeoDAO.HistorialDao;
 import com.romeoDAO.UsuarioDao;
 
 /**
@@ -68,6 +72,17 @@ public class ServeletUser extends HttpServlet {
 				int verificausuario =  usuDao.ingresoUsuario(usuario).size();
 				
 				if (verificausuario == 1 ) {
+					TbHistorial histo = new TbHistorial();
+					HistorialDao histodao = new HistorialDao();
+					Date fecha = new Date();
+					
+					histo.setFecha(fecha);
+					usuario.setIdUsuarios(usuario.getIdUsuarios());
+					histo.setTbUsuariop(usuario);
+					histodao.agregarDatosHistorial(histo);
+					
+					
+					
 					HttpSession seccion = request.getSession(true);
 					seccion.setAttribute("usuario", usu);
 					response.sendRedirect("Principal.jsp");
