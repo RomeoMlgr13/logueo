@@ -19,10 +19,9 @@ if(usuariovariabledeseccion == null){
 
 <form action="ServeletUser" method="post">
 <input type="submit" value="CERRAR" name="btncerrar">
-
-
 </form>
 
+<a href="historialUsuarios.jsp">ver historial de usuarios</a>
 <h1>hola mundo</h1>
 
 </body>
