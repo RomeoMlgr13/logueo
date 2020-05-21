@@ -25,7 +25,8 @@ public class UsuarioDao {
 			
 			em.getTransaction().commit();
 			
-			for(TbUsuariop datosids: Usuarios) {
+			for(TbUsuariop datosids:Usuarios) {
+				
 				usu.setIdUsuarios(datosids.getIdUsuarios());
 				
 			}
